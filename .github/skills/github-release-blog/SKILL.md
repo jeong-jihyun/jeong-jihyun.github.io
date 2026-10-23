@@ -34,7 +34,7 @@ Maintain a reliable, auditable record of repository work. For each requested Git
    - Clearly mark builds, tests, deployments, or runtime checks that were not run. Never invent test results.
    - Preserve useful existing documentation and project-specific conventions.
 
-4. **Validate**
+4. **Validate the project changes**
    - Review the final diff and changed paths.
    - Run appropriate tests/builds only when the available environment supports them and doing so is safe.
    - Report each validation as passed, failed, or not run, with a brief reason.
@@ -49,8 +49,10 @@ Maintain a reliable, auditable record of repository work. For each requested Git
      ---
      title: "YYYY-MM-DD Repository change summary"
      layout: post
+     date: YYYY-MM-DD HH:MM:SS +0900
      ---
      ```
+   - Keep the post's date aligned with the date in its filename unless there is a documented reason not to. Avoid setting a future date, since future-dated posts may not be published by Jekyll/GitHub Pages.
    - Include:
      - target repository link and branch;
      - concise purpose and summary;
@@ -58,18 +60,35 @@ Maintain a reliable, auditable record of repository work. For each requested Git
      - validation results and unverified items;
      - links to the project's README and relevant commits/files.
    - For private repositories, do not reveal secrets, credentials, private code, sensitive internal URLs, or confidential business details on the public blog. Describe the work at a safe high level and link only where access is appropriate.
-   - Do not claim a release, deployment, merge, or publication succeeded until the relevant operation is confirmed. A changelog post is not automatically a software release.
+   - Do not claim a release, deployment, or publication succeeded until the relevant operation is confirmed. A changelog post is not automatically a software release.
 
-6. **Create an auditable commit trail**
+6. **Verify post ordering and homepage visibility**
+   - Before publishing, inspect `_config.yml`, the homepage/list template, pagination settings, and any custom post-sorting logic relevant to the site.
+   - Ensure the new post's effective Jekyll date is correct. Jekyll normally orders `site.posts` by date descending, but explicit `date` front matter, future dates, pagination, custom sorting, or theme logic can affect what appears first.
+   - After adding the post, inspect the generated build output or deployment artifact when available. Confirm that the post appears in the generated post collection and that the homepage's first page/list is configured to show the newest post first.
+   - Do not assume that a successful Git commit means the post is visible, or that a successful Actions workflow means the expected URL and homepage listing are correct.
+   - Verify the post URL from the site's configured permalink rules rather than guessing it. Confirm the actual published page and homepage listing by fetching them through an available browser or HTTP-capable tool.
+   - If the live site cannot be fetched in the available environment, state that limitation explicitly. You may report a successful workflow/deployment only if the status is confirmed, but do not claim live-page visibility was verified.
+
+7. **Wait for deployment before reporting completion**
+   - After committing blog changes, locate the relevant GitHub Actions run or GitHub Pages deployment and poll/check its final state.
+   - Do not tell the user to check the site while the build/deployment is still running.
+   - If the build or deployment fails, inspect the logs, fix the issue if within scope, and rerun the relevant validation/deployment. If unable to fix it, report the failure and the next actionable blocker.
+   - Only report deployment as successful after the workflow/deployment status is completed successfully. Only report the post as visible after confirming the actual live URL and homepage listing.
+   - Do not ask the user to verify something that can be checked with available tools. If live verification is technically unavailable, clearly separate what was verified (commit, build, deployment status) from what remains unverified (live rendering/visibility).
+
+8. **Create an auditable commit trail**
    - Use clear commit messages that describe the documentation or code change.
    - Keep project changes and blog changes separate when practical, so each repository has a clear history.
    - Do not force-push, rewrite history, merge a PR, create a release, or delete resources unless explicitly requested.
    - If an existing file is updated, fetch its current SHA and use it for the update. Do not make concurrent writes to the same file.
 
-7. **Report completion**
-   - Provide links to the updated README, blog post, skill file, and commit(s), when available.
+9. **Report completion**
+   - Provide links to the updated README, blog post, skill file, relevant Actions run/deployment, and commit(s), when available.
    - Summarize the exact changes and validation state.
-   - Explicitly disclose anything not completed. Never report success based solely on an attempted tool call; confirm the resulting file or commit.
+   - Report in this order: project checks, blog build, deployment status, live post URL, and homepage listing.
+   - Clearly distinguish confirmed results from unverified items; do not describe an attempted operation as a completed one.
+   - Do not ask the user to confirm deployment completion or check the site before available verification steps are finished.
 
 ## Blog entry template
 
@@ -94,7 +113,7 @@ Maintain a reliable, auditable record of repository work. For each requested Git
 
 ## Safety and accuracy rules
 
-- Never invent files, commits, test outcomes, versions, runtime behavior, or links.
+- Never invent files, commits, test outcomes, versions, runtime behavior, deployment state, or links.
 - Keep public blog content safe for a public audience; assume it is permanently visible and indexed.
 - Do not copy source code from private repositories into the public blog.
 - If a task has no meaningful code or documentation change, record it only if the user requested a log; do not manufacture a release note.
