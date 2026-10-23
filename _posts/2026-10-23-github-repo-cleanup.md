@@ -33,3 +33,14 @@ layout: post
 ## 한계
 
 Android·Docker·Gradle 빌드와 외부 API 호출은 실행 환경 제한으로 확인하지 못했고, 각 README에 "미확인"으로 표시했습니다.
+
+
+## 추가 작업: Example01 문서화 및 Git 릴리즈 기록 스킬
+
+- **대상 저장소:** [jeong-jihyun/Example01](https://github.com/jeong-jihyun/Example01) (비공개 저장소)
+- **문서화:** README에 프로젝트 구성, C++ 학습 주제, 코드 검토 결과, 검증 범위를 정리했습니다.
+- **검토 범위:** Visual Studio 솔루션과 4개 C++ 예제 프로젝트의 구조 및 소스 정적 검토
+- **검증 상태:** Visual Studio/MSBuild를 실행하지 못했으므로 빌드 및 런타임 동작은 미검증입니다. README에 이 한계를 명시했습니다.
+- **재사용 스킬:** [github-release-blog SKILL.md](https://github.com/jeong-jihyun/jeong-jihyun.github.io/blob/master/.github/skills/github-release-blog/SKILL.md)를 추가했습니다. 이후 GitHub 작업 시 변경사항 분석, README 갱신, 검증 상태 기록, 날짜별 Jekyll 블로그 변경 내역 작성, 완료 링크 보고를 표준 절차로 정의합니다.
+
+비공개 저장소의 구체적인 소스 코드나 세부 취약점은 공개 블로그에 복사하지 않았습니다.
