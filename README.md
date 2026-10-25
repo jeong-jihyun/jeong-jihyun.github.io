@@ -4,96 +4,25 @@ permalink: "/about/"
 layout: page
 ---
 
-## Installation
+## 이 블로그는
 
-Just fork this [repository](https://github.com/niklasbuschmann/contrast) and adjust the `_config.yml` to use with [Github Pages](https://pages.github.com/) and your page is done.
+**자동화 수익 창출과 개발 레퍼런스**를 쌓아 두는 곳입니다. 직접 만들고 GitHub에 올린 것을 그때그때 글로 남깁니다.
 
-## Features
+## 어떤 글이 올라오나
 
- - supports dark mode on macOS Mojave
- - optional sidebar
- - MathJax support
- - no external ressources
- - included archive page
- - supports pagination
- - feed generation
- - responsive
- - syntax highlighting
- - supports comments via [disqus](https://disqus.com/) or [isso](http://posativ.org/isso/)
+- **구글 앱 스크립트 예제**: 구글 시트·메일·캘린더·드라이브를 자동화하는 예제를 번호를 붙여 모읍니다.
+- **파이썬 업무 자동화 스크립트**: CSV·엑셀·로그·정산처럼 사무와 금융 IT에서 바로 쓰는 스크립트 모음입니다.
+- **수익 창출 프로젝트**: 아이디어 목록을 설계, 개발, GitHub 반영까지 하나씩 만들어 가는 기록입니다.
+- **개발 메모**: 도구 사용법과 환경 설정에서 막혔다가 풀어낸 내용입니다.
 
-## Based on
+## 글을 쓰는 원칙
 
-- [Hyde](https://github.com/poole/hyde)
-- [Minima](https://github.com/jekyll/minima)
-- [Lagrange](https://github.com/LeNPaul/Lagrange)
-- [Font Awesome](http://fontawesome.io/)
-- [KaTeX](https://katex.org/)
-- [Pygments](https://github.com/richleland/pygments-css)
+- 어려운 말 대신 쉽고 단순하게, 처음 하는 사람도 따라 할 수 있게 씁니다.
+- 직접 실행해 확인하지 못한 부분은 글 끝에 **미확인**으로 솔직하게 적습니다.
+- 글마다 GitHub 저장소와 커밋 번호를 남겨 어디서 나온 내용인지 찾을 수 있게 합니다.
 
-## Installation (jekyll-remote-theme method)
+## 만든 사람
 
-You can use this theme with the `jekyll-remote-theme` plugin. Just create an empty repo, copy over the `index.html` file and add this to your `_config.yml`:
+정지현. 25년 넘게 금융 IT와 증권 거래 시스템 개발·컨설팅을 해 왔고, 지금은 자동화로 쌓아 가는 수익 구조에 관심을 두고 있습니다.
 
-```yaml
-remote_theme: niklasbuschmann/contrast@v2.11
-
-plugins:
-  - jekyll-remote-theme
-```
-
-Note: to enable icons you also need to copy over the `_data` folder.
-
-## Config
-
-Your `_config.yml` could for example look like this:
-
-```yaml
-title: "Blog Title"
-author: "Blog Author"
-description: "My personal blog about ... something"
-permalink: /:title/
-lang: "en"
-excerpt_separator: "\n\n\n"
-date_format: "%B %d, %Y"
-
-# Layout
-
-show_excerpts: true        # show article excerpts on the home page
-show_frame: true           # adds a gray frame to the site
-show_sidebar: false        # show a sidebar instead of the usual header
-
-# Menu
-
-navigation:                # accepts {file, title, url, icon, sidebaricon}
-  - {file: "index.html"}
-  - {file: "README.md"}
-
-external:                  # shows a footer with social links - for available icons see fontawesome.com/icons
-  - {title: Mail, icon: envelope, url: "mailto:niklasbuschmann@users.noreply.github.com"}
-  - {title: Github, icon: github, url: "https://github.com/niklasbuschmann/contrast"}
-  - {title: Subscribe, icon: rss, url: "/feed.xml"}
-
-comments:
-#  disqus_shortname: ""    # see https://disqus.com/
-#  isso_domain: ""         # see https://posativ.org/isso/
-
-plugins:
- - jekyll-feed
-
-```
-
-## MathJax
-
-Contrast comes preinstalled with a leightweight alternative to MathJax called [KaTeX](https://katex.org/). To display equations in a post simply set `mathjax: true` in the article's front matter.
-
-## License
-
-[public domain](http://unlicense.org/)
-
-## Screenshots
-
-![screenshot](https://user-images.githubusercontent.com/4943215/109431850-cd711780-7a08-11eb-8601-2763f2ee6bb4.png)
-
-![screenshot](https://user-images.githubusercontent.com/4943215/109431832-b6cac080-7a08-11eb-9c5e-a058680c23a1.png)
-
-![screenshot](https://user-images.githubusercontent.com/4943215/73125194-5f0b8b80-3fa4-11ea-805c-8387187503ad.png)
+- GitHub: [jeong-jihyun](https://github.com/jeong-jihyun)
