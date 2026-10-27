@@ -10,6 +10,7 @@ layout: post
 | 저장소 | 바뀐 내용 | 커밋 |
 |---|---|---|
 | [paper-trading-app](https://github.com/jeong-jihyun/paper-trading-app) | 새 저장소. 모바일 앱, 파이썬 윈폼, 시세 수집 스크립트, Firebase 보안 규칙 (파일 64개) | fae6bfc |
+| [paper-trading-app](https://github.com/jeong-jihyun/paper-trading-app) | Vercel 자동 배포 설정(`app/vercel.json`)과 README의 배포 안내 추가 | 77826c6 |
 
 ## 들어 있는 것
 
@@ -19,6 +20,11 @@ layout: post
 | desktop/ | 파이썬 tkinter 윈폼 프로그램. 모의투자가 기본이고 대신증권 CYBOS Plus 연결은 선택 |
 | scripts/, .github/ | 공공데이터 시세를 하루 1회 저장하고 대기 주문 체결·알림을 검사하는 자동 실행 |
 | 루트 | README, Firestore 보안 규칙·색인 설정 |
+
+## 배포 방식
+
+- 웹 앱은 Vercel에 배포합니다. Firebase 웹 설정값은 Vercel 환경 변수에 한 번만 저장해 두고, GitHub에 올리면 자동으로 빌드·배포되는 방식으로 바꿨습니다.
+- 공공데이터 인증키와 Firebase 관리자 키는 앱에 넣지 않고, 시세 수집용으로 GitHub Secrets에만 등록합니다.
 
 ## 알아 둘 점
 
