@@ -1,6 +1,7 @@
 ---
 title: "2026-10-28 agent-team-bootstrap 릴리즈"
 layout: post
+date: 2026-10-28 18:43:09 +0900
 ---
 
 ## 한 줄 요약
