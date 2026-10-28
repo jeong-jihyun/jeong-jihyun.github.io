@@ -3,6 +3,8 @@ author: "JiHyun.Jeong"
 description: ""
 permalink: /:title/
 timezone: Asia/Seoul
+paginate: 3                # 첫 화면에 한 페이지당 글 3개씩
+paginate_path: "/page:num/"
 lang: "en"
 excerpt_separator: "\n\n\n"
 date_format: "%B %d, %Y"
@@ -31,3 +33,4 @@ comments:
 
 plugins:
  - jekyll-feed
+ - jekyll-paginate
