@@ -15,6 +15,120 @@
   background: $link-color
   text-decoration: inherit
 
+.search
+  position: relative
+  box-sizing: border-box
+  padding-bottom: 0
+
+body.searching .home-post, body.searching .pager
+  display: none
+
+.search-field
+  position: relative
+
+.search-icon
+  position: absolute
+  left: .9em
+  top: .85em
+  width: 1.1em
+  height: 1.1em
+  fill: none
+  stroke: currentColor
+  stroke-width: 2
+  stroke-linecap: round
+  opacity: .45
+  pointer-events: none
+
+.search-input
+  box-sizing: border-box
+  width: 100%
+  font: inherit
+  color: inherit
+  background: reduce(4)
+  border: 1px solid reduce(18)
+  border-radius: 2px
+  padding: .65em 2.6em .65em 2.7em
+  transition: .2s border-color, .2s box-shadow
+  -webkit-appearance: none
+  appearance: none
+  &::placeholder
+    color: inherit
+    opacity: .4
+  &:focus
+    outline: none
+    border-color: $link-color
+    box-shadow: 0 0 0 3px rgba($link-color, .18)
+  &::-webkit-search-cancel-button
+    -webkit-appearance: none
+
+.search-key
+  position: absolute
+  right: .75em
+  top: .6em
+  font: inherit
+  font-size: .8em
+  line-height: 1
+  padding: .35em .55em
+  border: 1px solid reduce(22)
+  border-radius: 2px
+  opacity: .5
+  pointer-events: none
+
+.search-input:focus ~ .search-key
+  opacity: 0
+
+.search-status
+  margin: .9em 0 0
+  font-size: .85em
+  color: reduce(100)
+  text-align: left
+  &:empty
+    display: none
+
+.search-results
+  list-style: none
+  margin: .4em 0 0
+  padding: 0
+
+.search-results li
+  margin: 0
+  padding: 1em 0
+  border-bottom: 1px solid reduce(14)
+  &:last-child
+    border-bottom: 0
+
+.search-results a
+  color: inherit
+  font-weight: $heading-weight
+  font-size: 1.08em
+
+.search-results a:hover
+  color: $link-color
+  text-decoration: inherit
+
+.search-results time
+  display: block
+  margin: .1em 0 .35em
+  font-size: .82em
+  color: reduce(100)
+
+.search-results p
+  margin: 0
+  font-size: .92em
+  line-height: 1.55
+  text-align: left
+  opacity: .75
+
+.search mark
+  color: inherit
+  background: rgba($link-color, .2)
+  border-radius: 2px
+  padding: 0 .1em
+
+@media (max-width: 32em)
+  .search-key
+    display: none
+
 .archive
   font-size: 1.1em
 
