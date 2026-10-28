@@ -1,3 +1,46 @@
+<div id="blog-search" style="margin-bottom:1.5em">
+  <input id="q" type="search" placeholder="글 검색 (제목·내용)" autocomplete="off"
+    style="width:100%;box-sizing:border-box;padding:.6em .8em;font:inherit;color:inherit;background:transparent;border:1px solid currentColor;border-radius:4px;opacity:.9">
+  <div id="search-status" style="margin-top:.5em;font-size:.9em;opacity:.7"></div>
+  <ul id="search-results" style="list-style:none;padding:0;margin:.5em 0 0"></ul>
+</div>
+<script>
+(function () {
+  var q = document.getElementById('q'), box = document.getElementById('search-results'),
+      status = document.getElementById('search-status'), list = document.getElementById('home-list'),
+      data = null, loading = false;
+  function load(cb) {
+    if (data) return cb();
+    if (loading) return;
+    loading = true;
+    fetch('{{ "/search.json" | relative_url }}').then(function (r) { return r.json(); })
+      .then(function (j) { data = j; cb(); })
+      .catch(function () { status.textContent = '검색 데이터를 불러오지 못했습니다.'; loading = false; });
+  }
+  function run() {
+    var terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    box.innerHTML = '';
+    if (!terms.length) { status.textContent = ''; list.style.display = ''; return; }
+    list.style.display = 'none';
+    var hits = data.filter(function (p) {
+      var s = (p.title + ' ' + p.content).toLowerCase();
+      return terms.every(function (t) { return s.indexOf(t) !== -1; });
+    });
+    status.textContent = hits.length ? hits.length + '개의 글을 찾았습니다.' : '검색 결과가 없습니다.';
+    hits.forEach(function (p) {
+      var li = document.createElement('li'); li.style.margin = '0 0 1em';
+      var a = document.createElement('a'); a.href = p.url; a.textContent = p.title;
+      var d = document.createElement('div'); d.style.cssText = 'font-size:.85em;opacity:.7'; d.textContent = p.date;
+      var sn = document.createElement('div'); sn.style.cssText = 'font-size:.9em;margin-top:.2em';
+      var idx = p.content.toLowerCase().indexOf(terms[0]);
+      if (idx > -1) { var st = Math.max(0, idx - 40); sn.textContent = (st ? '…' : '') + p.content.substr(st, 120) + '…'; }
+      li.appendChild(a); li.appendChild(d); li.appendChild(sn); box.appendChild(li);
+    });
+  }
+  q.addEventListener('input', function () { load(run); });
+})();
+</script>
+<div id="home-list">
 {%- assign posts = paginator.posts | default: site.posts -%}
 {% for post in posts %}
   <article>
@@ -14,3 +57,4 @@
     {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">이전 글 »</a>{% else %}<span></span>{% endif %}
   </footer>
 {% endif %}
+</div>
