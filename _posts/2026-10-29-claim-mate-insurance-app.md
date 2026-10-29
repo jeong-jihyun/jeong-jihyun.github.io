@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "보험 청구 서류를 PDF 한 개로 묶어 주는 앱, 청구메이트 만들기"
-date: 2026-10-29 20:50:00 +0900
+date: 2026-10-29 20:40:00 +0900
 categories: [개발, 앱]
 tags: [ReactNative, Expo, Next.js, Vercel, 실손보험]
 ---
