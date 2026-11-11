@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>요약 프로젝트 실험실</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1c1f24;--sub:#5d6673;--ac:#2563eb;--ok:#15803d;--bad:#b91c1c;--bd:#e3e6ea}
+@media(prefers-color-scheme:dark){:root{--bg:#14171c;--card:#1d2128;--tx:#eceff4;--sub:#9aa4b2;--ac:#6aa0ff;--ok:#4ade80;--bad:#f87171;--bd:#2c323b}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 -apple-system,"Noto Sans KR",sans-serif;padding:0 16px 80px}
+header{padding:20px 0 8px}h1{font-size:1.35rem;margin:0}p.sub{color:var(--sub);margin:.3rem 0 0;font-size:.92rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;margin:14px 0;overflow:hidden}
+.card>summary{list-style:none;padding:16px;cursor:pointer;min-height:56px}.card>summary::-webkit-details-marker{display:none}
+.tag{display:inline-block;font-size:.75rem;color:var(--sub);border:1px solid var(--bd);border-radius:20px;padding:1px 9px;margin-right:6px}
+.t{font-weight:700;margin-top:6px}.body{padding:0 16px 16px}
+h3{font-size:.95rem;margin:14px 0 6px}ul{margin:0;padding-left:1.2rem}li{margin:3px 0}
+label{display:block;font-size:.88rem;color:var(--sub);margin:12px 0 4px}
+input,textarea{width:100%;font:inherit;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}textarea{min-height:110px}
+button{font:inherit;font-weight:700;min-height:48px;padding:0 18px;border-radius:12px;border:0;background:var(--ac);color:#fff;margin:14px 8px 0 0}
+button.g{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.st{font-size:.9rem;margin-top:10px;color:var(--sub)}.ok{color:var(--ok)}.bad{color:var(--bad)}
+pre{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:12px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:.82rem;max-height:320px}
+img{max-width:100%;border-radius:10px;margin-top:10px}a{color:var(--ac)}
+</style></head><body>
+<header><h1>요약 프로젝트 실험실</h1>
+<p class="sub">CONNECT AI LAB 영상에서 만든 모의 프로젝트를 휴대폰에서 바로 실행합니다. 서버 없이 이 화면 안에서 파이썬이 돌아갑니다. 처음 실행은 파이썬을 내려받느라 10~20초 걸립니다.</p></header>
+<div id="list"></div>
+<p class="sub">소스: <a href="https://github.com/jeong-jihyun/youtube-channel-summarizer">github.com/jeong-jihyun/youtube-channel-summarizer</a> · 모든 값은 모의(가짜) 데이터입니다.</p>
+<script>
+const PROJECTS = [{"name": "phone-accessibility-tree-agent", "title": "모의 스마트폰 유즈 에이전트", "entry": "agent:api", "files": ["agent.py"], "requirements": [], "category": "computer-use", "number": "0001", "uses": ["실제 폰·컴퓨터 유즈 에이전트를 만들기 전에 '화면을 JSON으로 읽고 → 다음 행동을 고르는' 규칙을 안전하게 연습하고 시험한다(가짜 폰이라 계정·결제 위험이 없다).", "에이전트 규칙을 고칠 때마다 같은 시나리오로 다시 돌려 망가지지 않았는지 확인하는 회귀 시험 틀로 쓴다.", "접근성 트리 방식과 스크린샷 방식의 토큰 비용 차이를 어림해 보며 어느 방식을 쓸지 정한다(가정값 기준).", "FakePhone에 화면(쿠팡 장바구니, 블로그 글쓰기 등)을 더 넣어 내 업무 루틴을 먼저 모의로 검증한다."], "inputs": [{"key": "text", "label": "폰에 올릴 글", "type": "text", "default": "컴퓨터 유즈 연습 글입니다"}], "video": {"id": "K4QdeGqTSfQ", "title": "AI에게 내 스마트폰을 맡겼습니다 (THE FOUNDER EP.2)"}}, {"name": "night-school-scheduler", "title": "AI 야학당 일정표 생성기", "entry": "schedule:api", "files": ["schedule.py"], "requirements": [], "category": "business", "number": "0002", "uses": ["야학당 방송 일정을 .ics 파일로 받아 휴대폰 달력(구글·삼성 달력)에 한 번에 넣고 알림을 받는다.", "날짜 범위만 바꿔 다른 스터디·라이브 일정(평일 저녁 공개, 주말 멤버십 같은 규칙)도 만든다.", "주별 횟수 표로 한 달에 몇 번 참석해야 하는지 계획을 세운다.", "규칙(요일·시간)을 고쳐 내 팀 정기 모임 일정표 생성기로 재사용한다."], "inputs": [{"key": "start", "label": "시작일", "type": "date", "default": "2026-11-11"}, {"key": "end", "label": "끝나는 날", "type": "date", "default": "2026-12-31"}], "video": {"id": "0Hif6Y40uC8", "title": "지금은 AI 문맹에서 벗어나야 합니다 (AI 야학당)"}}, {"name": "code-rendered-video-combos", "title": "코드로 렌더하는 영상과 매일 조합", "entry": "render:api", "files": ["render.py"], "requirements": ["numpy", "pillow"], "category": "automation", "number": "0003", "uses": ["영상 자동화의 뼈대(장면 1번 만들기 → 카메라 경로로 렌더 → 날짜별 조합)를 블렌더 없이 먼저 시험한다.", "모자×캐릭터×신발 같은 조합표로 매일 다른 콘텐츠 기획안을 뽑는 도구로 쓴다(18가지, 날짜로 고정 선택).", "나중에 실제 블렌더 파이썬 스크립트로 옮길 때 조합 고르기와 프레임 생성 로직을 그대로 가져간다.", "영상 생성 API 없이 코드 렌더로 비용을 아끼는 방식이 내 채널에 맞는지 작게 체험한다."], "inputs": [{"key": "date", "label": "날짜(그날의 조합 선택)", "type": "date", "default": "2026-11-12"}], "video": {"id": "Yz3124ulHKE", "title": "AI 직원들이 밤새 영상 만드는 1인 기업"}}, {"name": "runway-and-model-router", "title": "런웨이 계산기와 모델 라우터", "entry": "router:api", "files": ["router.py"], "requirements": [], "category": "business", "number": "0004", "uses": ["내 1인 기업의 하루 운영비와 런웨이(몇 일 버티는지)를 숫자를 바꿔 가며 계산한다.", "작업 종류별로 큰 모델·작은 모델·로컬 모델 중 어디로 보낼지 규칙표를 만들고 절감률을 본다.", "모델 가격(MODELS)과 작업 목록(TASKS)을 내 실제 값으로 고쳐 비용 시뮬레이터로 쓴다(지금 가격은 가정값).", "프로젝트별 '이 안에 성과 없으면 중단' 기준일을 정하는 근거 자료로 쓴다."], "inputs": [{"key": "budget", "label": "예산(원)", "type": "number", "default": "1000000"}, {"key": "tokens", "label": "작업당 하루 토큰 수", "type": "number", "default": "50000"}, {"key": "power", "label": "하루 전기·기타(원)", "type": "number", "default": "1500"}], "video": {"id": "VD9OCNkJ8Dw", "title": "2023년부터 직접 다 해본 AI 1인 기업 자동화 (EP.1)"}}, {"name": "showcase-chapter-index", "title": "서비스 챕터 색인", "entry": "index:api", "files": ["chapters_sample.txt", "index.py"], "requirements": [], "category": "business", "number": "0005", "uses": ["챕터가 많은 긴 영상의 설명란을 붙여 넣으면 '시간 링크가 걸린 목차 표'를 만들어 블로그·노션에 그대로 붙여 넣는다.", "다른 영상 ID를 넣어 내 영상 목차 만들기에도 쓴다.", "서비스별 설명 시간 간격을 보고 어느 부분을 길게 다루는지 파악한다(샘플은 일부만 넣어 실제 길이와 다름).", "챕터 줄 형식 검사기로 쓴다(형식이 틀린 줄은 건너뜀)."], "inputs": [{"key": "chapters", "label": "챕터 목록(한 줄에 '0:00 제목: 한 줄')", "type": "textarea", "default": "0:00 인트로: 시작\n3:17 아우라 주얼리: 반지 가상 착용\n6:06 리뷰하운드: 리뷰에서 오늘 고칠 3가지"}, {"key": "video", "label": "영상 ID", "type": "text", "default": "aE7oIEgoNsw"}], "video": {"id": "aE7oIEgoNsw", "title": "AI 1인 기업가가 된 129명"}}];
+const PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
+let pyPromise = null;
+const loaded = {};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function loadPy(setStatus){
+  if(!pyPromise){
+    pyPromise = new Promise((res, rej) => {
+      setStatus('파이썬을 준비하는 중... (처음 1회)');
+      const s = document.createElement('script'); s.src = PYODIDE_URL + 'pyodide.js';
+      s.onload = async () => { try { res(await loadPyodide({indexURL: PYODIDE_URL})); } catch(e){ rej(e); } };
+      s.onerror = () => rej(new Error('파이썬 실행기를 내려받지 못했습니다. 인터넷 연결을 확인하세요.'));
+      document.head.appendChild(s);
+    });
+  }
+  return pyPromise;
+}
+
+async function prepare(p, py, setStatus){
+  if(loaded[p.name]) return;
+  if(p.requirements.length){ setStatus('필요한 패키지 설치 중: ' + p.requirements.join(', ')); await py.loadPackage(p.requirements); }
+  const dir = '/proj/' + p.name; py.FS.mkdirTree(dir);
+  for(const f of p.files){
+    const r = await fetch('projects/' + p.name + '/' + f); if(!r.ok) throw new Error(f + ' 을 불러오지 못했습니다');
+    py.FS.writeFile(dir + '/' + f, await r.text());
+  }
+  loaded[p.name] = true;
+}
+
+async function runProject(p, root){
+  const st = root.querySelector('.st'), out = root.querySelector('pre'), img = root.querySelector('.img'), acts = root.querySelector('.acts');
+  const setStatus = (t, cls) => { st.textContent = t; st.className = 'st ' + (cls || ''); };
+  const params = {}; root.querySelectorAll('[data-k]').forEach(e => params[e.dataset.k] = e.value);
+  img.innerHTML = ''; acts.innerHTML = ''; out.textContent = '';
+  try{
+    const py = await loadPy(setStatus); await prepare(p, py, setStatus); setStatus('실행 중...');
+    py.globals.set('P_DIR', '/proj/' + p.name); py.globals.set('P_ENTRY', p.entry); py.globals.set('P_PARAMS', JSON.stringify(params));
+    const txt = await py.runPythonAsync(`
+import sys, json, importlib
+if P_DIR not in sys.path: sys.path.insert(0, P_DIR)
+m, f = P_ENTRY.split(":")
+try:
+    r = getattr(importlib.import_module(m), f)(json.loads(P_PARAMS))
+except Exception as e:
+    r = {"ok": False, "error": str(e)}
+json.dumps(r, ensure_ascii=False)`);
+    const j = JSON.parse(txt);
+    setStatus(j.ok ? '성공' : '실패: ' + (j.error || '결과를 확인하세요'), j.ok ? 'ok' : 'bad');
+    if(j.gif_base64){ img.innerHTML = '<img alt="렌더 결과" src="data:image/gif;base64,' + j.gif_base64 + '">'; j.gif_base64 = '(그림 데이터 생략)'; }
+    if(j.ics){ const b = document.createElement('button'); b.textContent = '달력 파일(.ics) 받기'; b.onclick = () => {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j.ics], {type:'text/calendar'})); a.download = 'night_school.ics'; a.click(); }; acts.appendChild(b); j.ics = '(' + j.ics_lines + '줄, 위 버튼으로 받기)'; }
+    const md = j.markdown || j.weekly_markdown;
+    if(md){ const b = document.createElement('button'); b.className = 'g'; b.textContent = '표 복사'; b.onclick = async () => { try{ await navigator.clipboard.writeText(md); b.textContent = '복사됨'; }catch(e){ b.textContent = '복사 실패'; } }; acts.appendChild(b); }
+    out.textContent = JSON.stringify(j, null, 2);
+  }catch(e){ setStatus('오류: ' + e.message, 'bad'); }
+}
+
+function field(i){
+  const a = 'data-k="' + esc(i.key) + '" value="' + esc(i.default) + '"';
+  const lab = '<label>' + esc(i.label) + '</label>';
+  if(i.type === 'textarea') return lab + '<textarea data-k="' + esc(i.key) + '">' + esc(i.default) + '</textarea>';
+  const t = {date:'date', number:'number'}[i.type] || 'text';
+  return lab + '<input type="' + t + '" inputmode="' + (t === 'number' ? 'numeric' : 'text') + '" ' + a + '>';
+}
+
+const list = document.getElementById('list');
+PROJECTS.forEach((p, n) => {
+  const d = document.createElement('details'); d.className = 'card'; if(n === 0) d.open = true;
+  d.innerHTML = '<summary><span class="tag">' + esc(p.number) + '</span><span class="tag">' + esc(p.category) + '</span><div class="t">' + esc(p.title) + '</div></summary>' +
+    '<div class="body"><p class="sub">원본 영상: <a href="https://www.youtube.com/watch?v=' + esc(p.video.id) + '">' + esc(p.video.title) + '</a></p>' +
+    '<h3>이렇게 쓸 수 있어요</h3><ul>' + p.uses.map(u => '<li>' + esc(u) + '</li>').join('') + '</ul>' +
+    '<h3>직접 해 보기</h3>' + p.inputs.map(field).join('') +
+    '<button class="run">실행</button><div class="acts" style="display:inline"></div><div class="st"></div><div class="img"></div><pre>(아직 실행 안 함)</pre></div>';
+  d.querySelector('.run').onclick = () => runProject(p, d);
+  list.appendChild(d);
+});
+</script></body></html>
