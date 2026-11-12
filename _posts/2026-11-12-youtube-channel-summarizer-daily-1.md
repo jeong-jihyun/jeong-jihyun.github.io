@@ -1,33 +1,26 @@
 ---
-title: "2026-11-12 CONNECT AI LAB 영상 5개 요약과 모의 프로젝트 5개"
+title: "2026-11-12 CONNECT AI LAB 영상 5개 요약과 프로젝트 5개(깊게 보강)"
 layout: post
 date: 2026-11-12 06:24:00 +0900
 ---
 
-**한 줄 요약:** CONNECT AI LAB 최신 영상 5개를 요약하고, 영상마다 동작하는 작은 모의 프로젝트를 만들어 저장소에 올렸습니다. 5개 모두 직접 실행해서 확인했습니다.
+**한 줄 요약:** 처음 만든 5개가 영상 내용에 비해 얕다는 지적을 받아, 영상 자막을 다시 읽고 5개를 영상의 노하우가 담기게 새로 만들었습니다. 이제 하루 1~2개만 깊게 만듭니다.
 
-## 오늘의 영상과 프로젝트
+## 무엇이 달라졌나
 
-| 영상 | 분류 | 프로젝트 | 커밋 |
-|---|---|---|---|
-| [AI에게 내 스마트폰을 맡겼습니다 (THE FOUNDER EP.2)](https://www.youtube.com/watch?v=K4QdeGqTSfQ) | computer-use | 0001 phone-accessibility-tree-agent | 399bdf7 |
-| [지금은 AI 문맹에서 벗어나야 합니다 (AI 야학당)](https://www.youtube.com/watch?v=0Hif6Y40uC8) | business | 0002 night-school-scheduler | 399bdf7 |
-| [AI 직원들이 밤새 영상 만드는 1인 기업](https://www.youtube.com/watch?v=Yz3124ulHKE) | automation | 0003 code-rendered-video-combos | 399bdf7 |
-| [2023년부터 직접 다 해본 AI 1인 기업 자동화 (EP.1)](https://www.youtube.com/watch?v=VD9OCNkJ8Dw) | business | 0004 runway-and-model-router | 399bdf7 |
-| [AI 1인 기업가가 된 129명](https://www.youtube.com/watch?v=aE7oIEgoNsw) | business | 0005 showcase-chapter-index | 399bdf7 |
+| 영상 | 새로 만든 것 | 실제로 확인한 것 |
+|---|---|---|
+| [스마트폰 유즈(EP.2)](https://www.youtube.com/watch?v=K4QdeGqTSfQ) | 내 하루 루틴을 AI 지시문으로 바꾸는 키트(화면 읽는 방법·토큰 어림·결제 단계 사람 확인) | 시간표와 지시문 생성, 자동 시험 통과. 실제 폰 조작은 미확인 |
+| [AI 야학당](https://www.youtube.com/watch?v=0Hif6Y40uC8) | 알림 포함 달력 파일, 출석률, 학습 기록 양식 | 달력 파일을 표준 파서로 읽어 51개 일정 확인 |
+| [영상 바이브코딩](https://www.youtube.com/watch?v=Yz3124ulHKE) | 실제 블렌더 스크립트(공·무지개·천 물리·360도 카메라)와 오토파일럿 프롬프트·조합 생성기 | 블렌더로 24프레임 렌더, 천이 떨어지는 것과 카메라 회전을 이미지로 확인, mp4 변환 성공 |
+| [AI 1인 기업 자동화(EP.1)](https://www.youtube.com/watch?v=VD9OCNkJ8Dw) | 런웨이·중단 마감일, 모델 라우팅, 컴퓨터 역할 배정, 투자자 포트폴리오 계산기 | 기본값 계산과 자동 시험 통과(가격·확률은 가정값) |
+| [129명의 AI 서비스](https://www.youtube.com/watch?v=aE7oIEgoNsw) | 서비스 점검표(100점)와 챕터 67줄 색인 | 점검 규칙은 자막 일부에서 뽑은 경험칙(전체 정독은 아님) |
 
-## 한 줄씩
+## 직접 써 보기
 
-- EP.2: AI가 화면을 글자(접근성 트리)로 읽고 폰을 조작하는 구조를 가짜 폰으로 흉내 냈습니다.
-- 야학당: 11~12월 평일 저녁 8시 일정표(달력 파일)를 만들었습니다.
-- 영상 바이브코딩: 카메라만 돌려 렌더하는 방식을 작은 GIF 렌더러로 만들었습니다.
-- EP.1: 작업별로 싼 모델을 고르고 런웨이를 계산하는 가상의 계산기입니다.
-- 129명 영상: 설명란 챕터를 바로가기 표로 바꿨습니다.
+휴대폰에서 [실험실](https://jeong-jihyun.github.io/lab/)을 열고 값을 넣어 실행하면 됩니다. 5개 모두 브라우저에서 실행되는 것을 확인했습니다.
 
-## 실패·미확인
+## 남은 한계
 
-- 실패한 항목은 없습니다.
-- 4시간 52분짜리 영상(129명)은 자막 전체를 정밀하게 읽지 못하고 일부와 설명 챕터 위주로 요약했습니다.
-- 모든 프로젝트는 가짜 데이터로 동작하며 외부 계정·키를 쓰지 않았습니다. GIF의 모양은 눈으로 보지 않고 프레임 차이를 숫자로만 확인했습니다.
-
-저장소: https://github.com/jeong-jihyun/youtube-channel-summarizer
+- 블렌더 전체 해상도 렌더 시간과 Blender MCP를 AI 도구에 연결하는 것은 직접 해 보지 못했습니다.
+- 4시간 52분짜리 영상은 자막 전체가 아니라 대표 사례를 골라 읽었습니다.
