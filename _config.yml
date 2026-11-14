@@ -3,7 +3,7 @@ author: "JiHyun.Jeong"
 description: ""
 permalink: /:title/
 timezone: Asia/Seoul
-paginate: 3                # 첫 화면에 한 페이지당 글 3개씩
+paginate: 5                # 첫 화면에 한 페이지당 글 5개씩
 paginate_path: "/page:num/"
 lang: "en"
 excerpt_separator: "\n\n\n"
@@ -12,7 +12,7 @@ date_format: "%B %d, %Y"
 # Layout
 
 show_excerpts: true        # show article excerpts on the home page
-show_frame: true           # adds a gray frame to the site
+show_frame: false          # 회색 틀·어두운 머리말 끔 → 전체 흰색 테마
 show_sidebar: false        # show a sidebar instead of the usual header
 minimal: false             # use a dark header
 
